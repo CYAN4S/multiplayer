@@ -5,7 +5,7 @@ namespace HelloWorld
 {
     public class HelloWorldPlayer : NetworkBehaviour
     {
-        public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
+        public NetworkVariable<Vector3> Position = new();
 
         public override void OnNetworkSpawn()
         {
@@ -30,17 +30,17 @@ namespace HelloWorld
         }
 
         [ServerRpc]
-        void SubmitPositionRequestServerRpc(ServerRpcParams rpcParams = default)
+        private void SubmitPositionRequestServerRpc(ServerRpcParams rpcParams = default)
         {
             Position.Value = GetRandomPositionOnPlane();
         }
 
-        static Vector3 GetRandomPositionOnPlane()
+        private static Vector3 GetRandomPositionOnPlane()
         {
             return new Vector3(Random.Range(-3f, 3f), 1f, Random.Range(-3f, 3f));
         }
 
-        void Update()
+        private void Update()
         {
             transform.position = Position.Value;
         }

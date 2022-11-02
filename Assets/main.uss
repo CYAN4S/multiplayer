@@ -1,0 +1,6 @@
+.default-button {
+    font-size: 36px;
+    -unity-font-style: bold;
+    background-color: rgba(255, 255, 255, 255);
+    color: rgba(38, 38, 38, 255);
+}
